@@ -9,11 +9,14 @@ ApplicationWindow {
     title: qsTr("Hello World")
 
    ListView{
-
+       model:trackModel
        anchors.fill: parent
        id : lisTest
        delegate : Item{
+           height:100
+           width:100
            Label{
+               anchors.fill: parent
                text:model.trackName
            }
        }

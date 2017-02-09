@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     NetWorkManager myMan;
     TrackModel myTrackModel;
     QObject::connect(&myMan,SIGNAL(launchTrack(Track* )),&myTrackModel,SLOT(trackReceived(Track*)));
-    myMan.launchTrackRequest("rise of the phoenix");
+    myMan.launchTrackRequest("i need a dollar");
     engine.rootContext()->setContextProperty("trackModel",&myTrackModel);
 
 

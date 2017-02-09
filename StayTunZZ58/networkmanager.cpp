@@ -39,7 +39,12 @@ void NetWorkManager::replyTrackFinished(QNetworkReply *reply)
             std::cout<<"no result found"<<std::endl;
         }else{
             foreach (QJsonValue field, mJsonFile.object()["data"].toArray()) {
-                Track* track=new Track(field.toObject()["title"].toString());
+                Track* track=new Track(field.toObject()["title"].toString(),
+                        field.toObject()["artist"].toObject()["name"].toString(),
+                        field.toObject()["album"].toObject()["title"].toString(),
+                        field.toObject()["id"].toInt(),
+                        field.toObject()["artist"].toObject()["id"].toInt(),
+                        field.toObject()["album"].toObject()["id"].toInt());
                 launchTrack(track);
 
             }
