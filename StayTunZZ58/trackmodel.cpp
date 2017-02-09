@@ -10,6 +10,8 @@ void TrackModel::ajouterTrack(Track *track)
     beginInsertRows(QModelIndex(),rowCount(),rowCount());
     m_TrackList.operator <<(track);
     endInsertRows();
+
+    track->printTrack();
 }
 
 int TrackModel::rowCount(const QModelIndex &parent) const
@@ -40,4 +42,9 @@ QHash<int, QByteArray> TrackModel::roleNames() const
     roles[TrackArtistRole]="trackArtist";
     roles[TrackAlbumRole]="trackAlbum";
     return roles;
+}
+
+void TrackModel::trackReceived(Track* tracRec)
+{
+    ajouterTrack(tracRec);
 }

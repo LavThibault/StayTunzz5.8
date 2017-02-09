@@ -1,14 +1,22 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include "track.h"
+#include "trackmodel.h"
+#include "networkmanager.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
-    Track t("la zoubida","lagaffe","unknow",1,2,3);
-    t.printTrack();
+    NetWorkManager myMan;
+    TrackModel myTrackModel;
+    QObject::connect(&myMan,SIGNAL(launchTrack(Track* )),&myTrackModel,SLOT(trackReceived(Track*)));
+    myMan.launchTrackRequest("rise of the phoenix");
+    engine.rootContext()->setContextProperty("trackModel",&myTrackModel);
+
+
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
 
 

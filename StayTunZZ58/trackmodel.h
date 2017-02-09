@@ -13,8 +13,12 @@ public:
         TypeRole=Qt::UserRole+1,TrackNameRole,TrackArtistRole,TrackAlbumRole
     };
 
-    void ajouterTrack(Track* myTrack);
-
+    void ajouterTrack(Track* track);
+    int rowCount(const QModelIndex &parent=QModelIndex()) const;
+    QVariant data(const QModelIndex &index, int role) const;
+    QHash<int,QByteArray> roleNames() const;
+public slots:
+    void trackReceived(Track* tracRec);
 private :
     QList<Track*> m_TrackList;
 };

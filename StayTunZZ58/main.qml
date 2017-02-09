@@ -8,30 +8,15 @@ ApplicationWindow {
     height: 480
     title: qsTr("Hello World")
 
-    SwipeView {
-        id: swipeView
-        anchors.fill: parent
-        currentIndex: tabBar.currentIndex
+   ListView{
 
-        Page1 {
-        }
+       anchors.fill: parent
+       id : lisTest
+       delegate : Item{
+           Label{
+               text:model.trackName
+           }
+       }
 
-        Page {
-            Label {
-                text: qsTr("Second page")
-                anchors.centerIn: parent
-            }
-        }
-    }
-
-    footer: TabBar {
-        id: tabBar
-        currentIndex: swipeView.currentIndex
-        TabButton {
-            text: qsTr("First")
-        }
-        TabButton {
-            text: qsTr("Second")
-        }
-    }
+   }
 }

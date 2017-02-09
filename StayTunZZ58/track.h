@@ -19,7 +19,7 @@ class Track : public QObject
     qint32 m_albId;
 
 public:
-    explicit Track(const QString &name,const QString &artist,const QString &album,const qint32 musId,const qint32 artId,const qint32 albID,QObject *parent = 0);
+    explicit Track(const QString &name,const QString &artist="NULL",const QString &album="NULL",const qint32 musId=0,const qint32 artId=0,const qint32 albID=0,QObject *parent = 0);
 
 
     Q_PROPERTY(QString trackName READ trackName WRITE setTrackName NOTIFY trackNameChanged)
